@@ -21,10 +21,7 @@ const TaskList = ({ tasks, completeTask, deleteTask }) => {
 };
 
 const TaskItem = ({ task, completeTask, deleteTask }) => {
-  const [isCompleted, setIsCompleted] = useState(false);
-
   const handleComplete = () => {
-    setIsCompleted(!isCompleted);
     completeTask(task.id);
   };
 
@@ -34,14 +31,14 @@ const TaskItem = ({ task, completeTask, deleteTask }) => {
 
   return (
     <ListItem
-      textDecoration={isCompleted ? "line-through" : "none"}
+      textDecoration={task.completed ? "line-through" : "none"}
       display="flex"
       alignItems="center"
       justifyContent="space-between"
       paddingLeft={4}
     >
       <VStack>
-        <Text fontWeight="bold" textDecoration={isCompleted ? "line-through" : "none"}>
+        <Text fontWeight="bold" textDecoration={task.completed ? "line-through" : "none"}>
           {task.name}
         </Text>
         {task.deadline && (
@@ -52,10 +49,10 @@ const TaskItem = ({ task, completeTask, deleteTask }) => {
       </VStack>
       <Box>
         <IconButton
-          icon={isCompleted ? <CheckSquare /> : <CheckSquare />}
+          icon={<CheckSquare />}
           onClick={handleComplete}
           colorScheme="green"
-          aria-label={isCompleted ? "Mark as incomplete" : "Mark as complete"}
+          aria-label={task.completed ? "Mark as incomplete" : "Mark as complete"}
           marginRight={2}
         />
         <IconButton
@@ -70,18 +67,11 @@ const TaskItem = ({ task, completeTask, deleteTask }) => {
   );
 };
 
-const TaskForm = ({ addTask, setTasks }) => {
+const TaskForm = ({ addTask }) => {
   const initialValues = {
     taskName: "",
     taskDeadline: ""
   };
-
-  useEffect(() => {
-    const storedTasks = localStorage.getItem("tasks");
-    if (storedTasks) {
-      setTasks(JSON.parse(storedTasks));
-    }
-  }, [setTasks]);
 
   const handleSubmit = (values, { resetForm }) => {
     if (values.taskName.trim() !== "") {
@@ -131,6 +121,13 @@ export default function TodoList() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
+    const storedTasks = localStorage.getItem("tasks");
+    if (storedTasks) {
+      setTasks(JSON.parse(storedTasks));
+    }
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
@@ -139,6 +136,7 @@ export default function TodoList() {
       id: Date.now(),
       name: taskName,
       deadline: taskDeadline,
+      completed: false // Nueva tarea, inicialmente no completada
     };
     setTasks([...tasks, newTask]);
   };
@@ -160,7 +158,7 @@ export default function TodoList() {
       <Text fontSize="2xl" fontWeight="bold" mb={4}>
         Todo List
       </Text>
-      <TaskForm addTask={addTask} setTasks={setTasks} />
+      <TaskForm addTask={addTask} />
       {tasks.length > 0 ? (
         <TaskList
           tasks={tasks}
