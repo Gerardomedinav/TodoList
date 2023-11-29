@@ -136,7 +136,7 @@ export default function TodoList() {
       id: Date.now(),
       name: taskName,
       deadline: taskDeadline,
-      completed: false // Nueva tarea, inicialmente no completada
+      completed: false
     };
     setTasks([...tasks, newTask]);
   };
