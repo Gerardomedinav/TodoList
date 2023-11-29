@@ -6,7 +6,7 @@ Este proyecto es el resultado del Trabajo Integrador Final desarrollado en el ma
 
 ## Captura de Pantalla
 
-![Captura de Pantalla](../miapp/public/Img/pantalla.png)
+![Captura de Pantalla](./miapp/public/Img/pantalla.png)
 
 ## Requerimientos
 
