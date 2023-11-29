@@ -88,5 +88,5 @@ Para obtener una copia de este proyecto y empezar a trabajar, sigue estos pasos:
 
   `npm start`
 
-Esto debería iniciar la aplicación en tu navegador local.
+  Esto debería iniciar la aplicación en tu navegador local.
 
