@@ -6,7 +6,7 @@ Este proyecto es el resultado del Trabajo Integrador Final desarrollado en el ma
 
 ## Captura de Pantalla
 
-![Captura de Pantalla](Captura_de_Pantalla.png)
+![Captura de Pantalla](../miapp/public/Img/pantalla.png)
 
 ## Requerimientos
 
@@ -54,10 +54,39 @@ Aplica estilos CSS para mejorar la apariencia de los componentes. Se puede utili
 
 Implementa la persistencia de datos utilizando localStorage para que las tareas persistan incluso después de recargar la página.
 
-## Formato de Entrega
+## Tecnologías Utilizadas
 
-Envía un archivo .rar o .zip con el siguiente formato: `apellido_entregafinal.rar`. Dentro del .rar o .zip, incluye el/los archivos de React JS, excluyendo la carpeta `node_modules`.
+- React
+- Chakra UI
+- Formik
 
 ## Colaboración
 
 La colaboración en el desarrollo se llevó a cabo mediante reuniones virtuales utilizando Zoom para facilitar la comunicación en tiempo real entre los miembros del equipo. Además, se utilizó un sistema de control de versiones basado en Git para gestionar y coordinar eficientemente el trabajo de desarrollo. Este enfoque permitió a los desarrolladores colaborar de manera efectiva, mantener un historial completo de cambios en el código y facilitar la integración de nuevas características al proyecto de manera coordinada.
+
+## Cómo Clonar el Repositorio
+
+Para obtener una copia de este proyecto y empezar a trabajar, sigue estos pasos:
+
+1. Abre tu terminal.
+
+2. Utiliza el siguiente comando para clonar el repositorio en tu máquina local:
+
+   
+   git clone https://github.com/Gerardomedinav/TodoList.git
+
+  Cambia al directorio del proyecto:
+
+  `cd TodoList`
+
+  Instala las dependencias:
+
+  `npm install`
+
+  Inicia la aplicación:
+
+
+  `npm start`
+
+Esto debería iniciar la aplicación en tu navegador local.
+
