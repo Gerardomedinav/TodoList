@@ -1,23 +1,24 @@
-
 .css-1g4jxam {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 200vh;
-    width: 100%;
-    height: 100vh; 
-    background-image: url('../../../public/Img/hoja_cuaderno.png');
-    background-size: 100% 100%; 
-    
-    background-repeat: no-repeat;
-  }
-  .css-1jtxts2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20rem; /* Cambiado de 200vh a 20rem */
+  width: 100%;
+  height: 100vh; 
  
-    margin-top: 5vh;
-  }
-  button {
-   
-    margin: 5px;
-  }
+}
 
+.css-1jtxts2 {
+  margin-top: 5vw; 
+}
+
+button {
+  margin: 0.5rem; 
+}
+
+.css-tl3ftk {
+  align-items: flex-start !important; 
+}
+
+ 
   

@@ -73,8 +73,27 @@ const TaskForm = ({ addTask }) => {
     taskDeadline: ""
   };
 
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        setError("");
+      }, 5000);
+    }
+  }, [error]);
+
   const handleSubmit = (values, { resetForm }) => {
     if (values.taskName.trim() !== "") {
+      // Validar la fecha actual
+      const currentDate = new Date();
+      const selectedDate = new Date(values.taskDeadline);
+
+      if (selectedDate < currentDate) {
+        setError("Date must be after today.");
+        return;
+      }
+
       addTask(values.taskName, values.taskDeadline);
       resetForm();
     }
@@ -101,6 +120,7 @@ const TaskForm = ({ addTask }) => {
             as={Input}
           />
           <ErrorMessage name="taskName" component={Text} color="red.500" fontSize="sm" />
+          
           <Field
             type="date"
             name="taskDeadline"
@@ -108,6 +128,15 @@ const TaskForm = ({ addTask }) => {
             as={Input}
             aria-label="Deadline"
           />
+          {error && (
+            <Text fontSize="sm" color="red.500" mb={2}>
+              {error}
+            </Text>
+          )}
+          <Text fontSize="sm" color="gray.500" mb={2}>
+            *Optional field: Task deadline
+          </Text>
+
           <Button type="submit" colorScheme="blue">
             Add task
           </Button>
@@ -154,7 +183,20 @@ export default function TodoList() {
   };
 
   return (
-    <Box maxW="500px" mx="auto" mt={8} className="todo-list-container">
+    <Box
+      mx="auto"
+      mt={8}
+      className="todo-list-container"
+      bgImage="url('/Img/hoja_cuaderno.png')"
+      bgSize="cover"
+      bgRepeat="no-repeat"
+      p={8}
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      width="34rem" // Ancho fijo de la imagen
+      height={`calc(90vh + ${tasks.length * 2}rem)`} // Ajusta el valor 4rem según tus necesidades
+    >
       <Text fontSize="2xl" fontWeight="bold" mb={4}>
         Todo List
       </Text>
